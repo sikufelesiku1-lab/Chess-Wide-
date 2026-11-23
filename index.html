@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b1220"><title>GLOBAL CHESS ARENA</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="#"><span class="logo">♟</span><span>GLOBAL <b>CHESS ARENA</b></span></a><nav><a href="#tournaments">Tournaments</a><a href="#how">How to play</a></nav><div id="account"><button class="ghost" id="loginOpen">Log in</button><button class="primary" id="signupOpen">Join free</button></div></header>
+<main>
+<section class="hero"><div><p class="eyebrow">YOUR BOARD. YOUR GLORY.</p><h1>Compete with the<br><em>world.</em></h1><p class="sub">Join tournaments, climb the standings and fight your way to the crown.</p><div class="actions"><a class="primary linkbtn" href="#tournaments">Explore tournaments</a><button class="ghost" id="heroJoin">Create account</button></div><div class="stats"><div><b>3</b><span>points for a win</span></div><div><b>4</b><span>players per group</span></div><div><b>2</b><span>qualify from each group</span></div></div></div><div class="hero-board" aria-label="Chessboard illustration"><div class="board-art" id="heroBoard"></div><div class="float-card"><span class="live-dot"></span> ARENA IS OPEN <b>Make your move.</b></div></div></section>
+<section id="tournaments" class="section"><div class="section-head"><div><p class="eyebrow">THE COMPETITION</p><h2>Live tournaments</h2></div><span class="pill" id="connection">Demo mode</span></div><div id="tournamentList" class="tournament-grid"></div></section>
+<section id="how" class="section how"><p class="eyebrow">WORLD CUP FORMAT</p><h2>One arena. One champion.</h2><div class="steps"><article><span>01</span><h3>Join a group</h3><p>Players are placed into groups of four.</p></article><article><span>02</span><h3>Play the group stage</h3><p>Face each of your three group rivals three times: 9 games per player.</p></article><article><span>03</span><h3>Reach the knockouts</h3><p>The top two from each group advance to best-of-three knockout matches.</p></article><article><span>04</span><h3>Lift the trophy</h3><p>Win the final and become the GLOBAL CHESS ARENA champion.</p></article></div></section>
+<section class="section admin" id="adminSection" hidden><div class="section-head"><div><p class="eyebrow">CONTROL ROOM</p><h2>Super Admin</h2></div><span class="pill">Admin access</span></div><form id="createTournament" class="admin-form"><label>Tournament name<input id="tourName" required placeholder="Global Championship"></label><label>Time control<select id="timeControl"><option>3+2</option><option>5+3</option><option>10+5</option><option>15+10</option><option>30+0</option><option>60+30</option><option>90+30</option><option>Custom</option></select></label><button class="primary">Create tournament</button></form><p class="hint">Set your account as Super Admin in Supabase using the SQL instructions in README.md.</p></section>
+</main>
+<footer><span>♟ GLOBAL CHESS ARENA</span><span>Play fair. Think deep. Win together.</span></footer>
+<div class="modal" id="authModal" hidden><div class="modal-card"><button class="close" id="closeModal">×</button><p class="eyebrow">WELCOME TO THE ARENA</p><h2 id="authTitle">Join the arena</h2><form id="authForm"><label>Username<input id="username" placeholder="Your chess name" autocomplete="nickname"></label><label>Email<input id="email" type="email" required autocomplete="email"></label><label>Password<input id="password" type="password" minlength="6" required autocomplete="current-password"></label><button class="primary full" id="authSubmit">Create free account</button></form><p class="hint" id="authHint">Already registered? <a href="#" id="switchAuth">Log in</a></p><p class="notice" id="authNotice"></p></div></div>
+<div class="modal" id="detailModal" hidden><div class="modal-card wide"><button class="close" id="closeDetail">×</button><div id="detailContent"></div></div></div>
+<script src="app.js"></script>
+</body></html>
